@@ -39,7 +39,7 @@ main{min-height:60vh}
 .mobile-menu[hidden]{display:none}
 .mobile-menu-inner{min-height:100dvh;padding:1.4rem 1.25rem 6rem;display:flex;flex-direction:column}
 .mobile-home{display:flex;align-items:center;gap:.75rem;font-family:var(--serif);font-size:1.75rem;font-weight:600}
-.mobile-home img{width:3.25rem;height:3.25rem;object-fit:cover;border-radius:50%;background:white}
+.mobile-home img{width:3.25rem;height:3.25rem;object-fit:cover;border-radius:50%;}
 .mobile-menu nav{display:grid;gap:.8rem;margin:auto 0}
 .mobile-menu nav a{font-family:var(--serif);font-size:clamp(2.7rem,13vw,5rem);line-height:.92;padding:.22em .08em;border-bottom:1px solid rgba(255,255,255,.14)}
 .mobile-social{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.3);padding-top:1.25rem}
