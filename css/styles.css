@@ -138,12 +138,13 @@ h1 em{font-weight:400;color:var(--forest)}
   position: absolute;
   right: 0;
   bottom: 0;
-  width: clamp(14rem, 24vw, 26rem);
+  width: clamp(350px, 35vw, 650px);
   height: auto;
   opacity: 0.55;
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  fill: currentColor;
 }
 
 .footer-grid,
@@ -151,6 +152,7 @@ h1 em{font-weight:400;color:var(--forest)}
   position: relative;
   z-index: 1;
 }
+
 
 .site-footer{background:var(--black);color:white;padding:4.5rem 1.15rem 6.5rem}
 .footer-grid{max-width:var(--content);margin:auto;display:grid;gap:2.5rem}
