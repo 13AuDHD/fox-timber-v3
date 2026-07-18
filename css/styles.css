@@ -138,9 +138,9 @@ h1 em{font-weight:400;color:var(--forest)}
   position: absolute;
   right: 0;
   bottom: 0;
-  width: clamp(350px, 35vw, 650px);
+  width: clamp(32rem, 45vw, 60rem);
   height: auto;
-  opacity: 0.55;
+  opacity: 0.08;
   pointer-events: none;
   user-select: none;
   z-index: 0;
