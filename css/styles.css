@@ -144,7 +144,6 @@ h1 em{font-weight:400;color:var(--forest)}
   pointer-events: none;
   user-select: none;
   z-index: 0;
-  fill: currentColor;
 }
 
 .footer-grid,
