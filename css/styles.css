@@ -366,7 +366,6 @@ body.career-modal-open {overflow: hidden;}
   .career-meta,.career-modal-meta {grid-template-columns: repeat(2, 1fr);column-gap: 2rem;}
   .career-future {grid-template-columns: 1fr 1fr;align-items: center;}
 }
-}
 @media (min-width:64rem){
   .mobile-menu-button,.mobile-menu{display:none!important}
   .site-header{height:6rem;padding:0 max(2rem,calc((100vw - var(--content))/2));display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:900;background:rgba(255,255,255,.92);backdrop-filter:blur(1rem);border-bottom:1px solid rgba(23,23,23,.08)}
@@ -380,6 +379,11 @@ body.career-modal-open {overflow: hidden;}
   .services{grid-template-columns:repeat(3,1fr)}
   .portfolio-grid{grid-template-columns:repeat(3,1fr)}
   .site-footer{padding-bottom:3rem}
+  .career-filters {grid-template-columns: repeat(4, 1fr) auto;align-items: end;}
+  .career-card {padding: 2rem;}
+  .career-meta {grid-template-columns: 1.3fr 1fr 1fr .8fr 1fr;}
+  .career-modal-header {padding: 1.5rem 2rem 2rem;}
+  .career-modal-actions,.career-modal-meta,.career-modal-description {padding-left: 2rem;padding-right: 2rem;}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
