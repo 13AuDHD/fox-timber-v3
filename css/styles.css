@@ -361,6 +361,11 @@ body.career-modal-open {overflow: hidden;}
   .scope-note,.contact-layout,.scheduler{grid-template-columns:1fr 1fr}
   .portfolio-grid{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1.4fr .7fr 1fr}
+  .career-search-heading {grid-template-columns: 1.35fr .65fr;align-items: end;}
+  .career-filters {grid-template-columns: repeat(2, 1fr);}
+  .career-meta,.career-modal-meta {grid-template-columns: repeat(2, 1fr);column-gap: 2rem;}
+  .career-future {grid-template-columns: 1fr 1fr;align-items: center;}
+}
 }
 @media (min-width:64rem){
   .mobile-menu-button,.mobile-menu{display:none!important}
