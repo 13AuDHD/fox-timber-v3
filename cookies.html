@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171717">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="apple-touch-icon" href="img/favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="Manage optional cookies and tracking preferences for the Fox & Timber website.">
+  <title>Your Privacy Choices | Fox &amp; Timber</title>
+</head>
+<body class="legal-page privacy-choice-page">
+  <div data-include="includes/header.htm"></div>
+  <main>
+    <section class="page-hero legal-hero privacy-choice-hero"><p class="kicker">Control your experience</p><h1>Your Privacy Choices</h1><p>Choose which optional cookies and tracking technologies this website may use on this browser.</p><p class="legal-updated">Your choices are saved locally on this device.</p></section>
+    <section class="privacy-switchboard section-pad" aria-labelledby="privacy-settings-title">
+      <div class="privacy-warning" role="note"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><div><h2>Some choices can affect performance.</h2><p>Rejecting optional cookies may reduce personalization, prevent certain embedded services from loading, interfere with analytics used to improve the site, or create a sub-par experience. Essential website functions remain enabled.</p></div></div>
+      <form class="privacy-controls" id="privacy-controls">
+        <div class="privacy-control-heading"><div><p class="eyebrow">Cookie switchboard</p><h2 id="privacy-settings-title">Select what you allow.</h2></div><p id="privacy-saved-status" class="privacy-saved-status" aria-live="polite"></p></div>
+        <fieldset class="privacy-option privacy-option-required"><div><legend>Essential</legend><p>Required for security, navigation, saved privacy choices, and basic website operation.</p></div><label class="privacy-toggle"><input type="checkbox" checked disabled><span aria-hidden="true"></span><strong>Always active</strong></label></fieldset>
+        <fieldset class="privacy-option"><div><legend>Preferences</legend><p>Remembers voluntary settings that can make the website more convenient or personalized.</p></div><label class="privacy-toggle"><input type="checkbox" name="preferences"><span aria-hidden="true"></span><strong>Allow</strong></label></fieldset>
+        <fieldset class="privacy-option"><div><legend>Analytics</legend><p>Helps us understand visits, navigation patterns, device types, and website performance.</p></div><label class="privacy-toggle"><input type="checkbox" name="analytics"><span aria-hidden="true"></span><strong>Allow</strong></label></fieldset>
+        <fieldset class="privacy-option"><div><legend>Marketing and social media</legend><p>May support campaign measurement, social embeds, advertising relevance, and cross-site tracking by third parties.</p></div><label class="privacy-toggle"><input type="checkbox" name="marketing"><span aria-hidden="true"></span><strong>Allow</strong></label></fieldset>
+        <div class="privacy-actions"><button class="button button-light" type="button" data-privacy-action="reject">Reject optional cookies</button><button class="button button-copper" type="button" data-privacy-action="save">Save my choices</button><button class="button button-dark" type="button" data-privacy-action="accept">Accept all</button></div>
+      </form>
+      <div class="privacy-details"><h2>How these controls work</h2><p>This page stores a consent record in your browser using local storage. The supplied JavaScript exposes your selections through <code>window.foxTimberConsent</code> and dispatches a <code>foxTimberConsentChanged</code> event.</p><p>Optional analytics, advertising, embeds, or other trackers must be configured to check that consent record before loading. Simply adding this page does not automatically control scripts added by third-party services.</p><p>You can return to this page at any time to change or withdraw optional consent. Clearing browser storage will reset the choices on that browser.</p></div>
+    </section>
+  </main>
+  <div data-include="includes/footer.htm"></div>
+  <script src="js/scripts.js" defer></script>
+</body>
+</html>
