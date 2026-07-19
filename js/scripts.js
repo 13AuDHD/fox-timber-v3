@@ -58,3 +58,261 @@ document.addEventListener("DOMContentLoaded", async () => {
   modal?.addEventListener("click", event => { if (event.target === modal) closeModal(); });
   document.addEventListener("keydown", event => { if (event.key === "Escape" && modal && !modal.hidden) closeModal(); });
 });
+
+// careers
+document.addEventListener("DOMContentLoaded", () => {
+  const careerList = document.querySelector("#career-list");
+  const careerCards = [...document.querySelectorAll(".career-card")];
+  const careerModal = document.querySelector(".career-modal");
+
+  if (!careerList || !careerCards.length || !careerModal) return;
+
+  const positionFilter = document.querySelector("#career-filter-position");
+  const locationFilter = document.querySelector("#career-filter-location");
+  const typeFilter = document.querySelector("#career-filter-type");
+  const rangeFilter = document.querySelector("#career-filter-range");
+  const filterForm = document.querySelector(".career-filters");
+  const resultCount = document.querySelector(".career-result-count");
+  const emptyState = document.querySelector(".career-empty");
+
+  const careerModalTitle = careerModal.querySelector("#career-modal-title");
+  const careerModalMeta = careerModal.querySelector(".career-modal-meta");
+  const careerModalDescription = careerModal.querySelector(".career-modal-description");
+  const careerModalClose = careerModal.querySelector(".career-modal-close");
+  const resumeUploadUrl = document.body.dataset.resumeUploadUrl?.trim() || "";
+
+  let activeCareerCard = null;
+  let returnFocus = null;
+
+  const uniqueSorted = values =>
+    [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
+
+  const addOptions = (select, values) => {
+    if (!select) return;
+
+    uniqueSorted(values).forEach(value => {
+      const option = document.createElement("option");
+      option.value = value.toLowerCase();
+      option.textContent = value;
+      select.append(option);
+    });
+  };
+
+  addOptions(positionFilter, careerCards.map(card => card.dataset.position));
+  addOptions(
+    locationFilter,
+    careerCards.flatMap(card => (card.dataset.locations || "").split("|"))
+  );
+  addOptions(typeFilter, careerCards.map(card => card.dataset.salaryType));
+
+  const salaryMatches = (card, range) => {
+    if (!range) return true;
+
+    const minimum = Number.parseFloat(card.dataset.salaryMin);
+    const maximum = Number.parseFloat(card.dataset.salaryMax);
+    const hasSalary = Number.isFinite(minimum) || Number.isFinite(maximum);
+
+    if (range === "tbd") return !hasSalary;
+
+    const low = Number.isFinite(minimum) ? minimum : maximum;
+    const high = Number.isFinite(maximum) ? maximum : minimum;
+
+    if (!Number.isFinite(low) || !Number.isFinite(high)) return false;
+    if (range === "under-20") return low < 20;
+    if (range === "20-30") return high >= 20 && low <= 30;
+    if (range === "30-50") return high >= 30 && low <= 50;
+    if (range === "50-plus") return high >= 50;
+
+    return true;
+  };
+
+  const applyCareerFilters = () => {
+    const position = positionFilter?.value || "";
+    const location = locationFilter?.value || "";
+    const salaryType = typeFilter?.value || "";
+    const salaryRange = rangeFilter?.value || "";
+
+    let shown = 0;
+
+    careerCards.forEach(card => {
+      const cardPosition = (card.dataset.position || "").toLowerCase();
+      const cardLocations = (card.dataset.locations || "")
+        .split("|")
+        .map(value => value.toLowerCase());
+      const cardSalaryType = (card.dataset.salaryType || "").toLowerCase();
+
+      const matches =
+        (!position || cardPosition === position) &&
+        (!location || cardLocations.includes(location)) &&
+        (!salaryType || cardSalaryType === salaryType) &&
+        salaryMatches(card, salaryRange);
+
+      card.hidden = !matches;
+      if (matches) shown += 1;
+    });
+
+    if (resultCount) {
+      resultCount.textContent =
+        `${shown} ${shown === 1 ? "position" : "positions"} shown`;
+    }
+
+    if (emptyState) emptyState.hidden = shown !== 0;
+  };
+
+  [positionFilter, locationFilter, typeFilter, rangeFilter].forEach(select => {
+    select?.addEventListener("change", applyCareerFilters);
+  });
+
+  filterForm?.addEventListener("reset", () => {
+    window.setTimeout(applyCareerFilters, 0);
+  });
+
+  const createMetaRow = (label, value) => {
+    const wrapper = document.createElement("div");
+    const term = document.createElement("dt");
+    const description = document.createElement("dd");
+
+    term.textContent = label;
+    description.textContent = value;
+    wrapper.append(term, description);
+
+    return wrapper;
+  };
+
+  const getMetaValue = (card, label) => {
+    const items = [...card.querySelectorAll(".career-meta div")];
+    const match = items.find(
+      item => item.querySelector("dt")?.textContent.trim() === label
+    );
+
+    return match?.querySelector("dd")?.textContent.trim() || "";
+  };
+
+  const openCareerModal = card => {
+    if (
+      !card ||
+      !careerModalTitle ||
+      !careerModalMeta ||
+      !careerModalDescription
+    ) return;
+
+    activeCareerCard = card;
+    returnFocus = document.activeElement;
+
+    const title =
+      card.dataset.position ||
+      card.querySelector(".career-title")?.textContent.trim() ||
+      "Position";
+
+    const details = card.querySelector(".career-details-template");
+
+    careerModalTitle.textContent = title;
+    careerModalMeta.replaceChildren(
+      createMetaRow("Position", title),
+      createMetaRow("Location", getMetaValue(card, "Location")),
+      createMetaRow("Date posted", getMetaValue(card, "Date posted")),
+      createMetaRow("Closing date", getMetaValue(card, "Closing date")),
+      createMetaRow("Salary type", getMetaValue(card, "Salary type")),
+      createMetaRow("Salary", getMetaValue(card, "Salary"))
+    );
+
+    careerModalDescription.innerHTML = details?.innerHTML || "";
+    careerModal.hidden = false;
+    document.body.classList.add("career-modal-open");
+    careerModalClose?.focus();
+  };
+
+  const closeCareerModal = () => {
+    careerModal.hidden = true;
+    document.body.classList.remove("career-modal-open");
+    activeCareerCard = null;
+
+    if (returnFocus instanceof HTMLElement) returnFocus.focus();
+  };
+
+  careerCards.forEach(card => {
+    card.querySelectorAll(".career-title, .career-open").forEach(button => {
+      button.addEventListener("click", () => openCareerModal(card));
+    });
+  });
+
+  careerModalClose?.addEventListener("click", closeCareerModal);
+
+  careerModal.addEventListener("click", event => {
+    if (event.target === careerModal) closeCareerModal();
+  });
+
+  careerModal.querySelectorAll(".career-share").forEach(button => {
+    button.addEventListener("click", async () => {
+      if (!activeCareerCard) return;
+
+      const position = activeCareerCard.dataset.position || "Position";
+      const title = `${position} at Fox & Timber`;
+      const text =
+        `Review this career opportunity with Fox & Timber. ` +
+        `Applications close ${getMetaValue(activeCareerCard, "Closing date")}.`;
+
+      const url =
+        `${window.location.href.split("#")[0]}#` +
+        encodeURIComponent(position.toLowerCase().replace(/\s+/g, "-"));
+
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text, url });
+          return;
+        } catch (error) {
+          if (error?.name === "AbortError") return;
+        }
+      }
+
+      window.location.href =
+        `mailto:?subject=${encodeURIComponent(title)}` +
+        `&body=${encodeURIComponent(`${text}\n\n${url}`)}`;
+    });
+  });
+
+  careerModal.querySelectorAll(".career-resume").forEach(button => {
+    button.addEventListener("click", () => {
+      if (resumeUploadUrl) {
+        window.open(resumeUploadUrl, "_blank", "noopener,noreferrer");
+        return;
+      }
+
+      window.alert(
+        "The rÃ©sumÃ© upload portal has not been connected yet. " +
+        "Add your Dropbox File Request, Google Form, or other upload URL " +
+        "to the data-resume-upload-url attribute on careers.html."
+      );
+    });
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !careerModal.hidden) {
+      closeCareerModal();
+      return;
+    }
+
+    if (event.key !== "Tab" || careerModal.hidden) return;
+
+    const focusable = [...careerModal.querySelectorAll(
+      'button:not([disabled]), a[href], input:not([disabled]), ' +
+      'select:not([disabled]), textarea:not([disabled]), ' +
+      '[tabindex]:not([tabindex="-1"])'
+    )].filter(element => element.offsetParent !== null);
+
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  applyCareerFilters();
+});
