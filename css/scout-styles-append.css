@@ -1,0 +1,357 @@
+/* Scout story page
+   Append this block to css/styles.css.
+*/
+
+.scout-page {
+  overflow-x: hidden;
+  background: #fff;
+  color: #171717;
+}
+
+.scout-page img {
+  display: block;
+  max-width: 100%;
+}
+
+.scout-page .section-shell {
+  width: min(100% - 2rem, 78rem);
+  margin-inline: auto;
+}
+
+.scout-page .eyebrow {
+  margin: 0;
+  color: #b66a2c;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.scout-page .prose {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.8;
+}
+
+.scout-page .prose p {
+  margin: 0 0 1.5rem;
+}
+
+.scout-hero {
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  position: relative;
+  background: #171717;
+  color: #fff;
+}
+
+.scout-hero__image {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.scout-hero__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(10, 12, 10, 0.93) 0%, rgba(10, 12, 10, 0.35) 54%, rgba(10, 12, 10, 0.1) 100%),
+    linear-gradient(to right, rgba(10, 12, 10, 0.5), transparent 68%);
+}
+
+.scout-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.scout-hero__copy {
+  z-index: 1;
+  width: min(100%, 55rem);
+  padding: clamp(8rem, 16vw, 13rem) 1rem clamp(3rem, 7vw, 6rem);
+}
+
+.scout-hero__copy h1 {
+  max-width: 8ch;
+  margin: 0.3rem 0 1.25rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(4.5rem, 15vw, 10rem);
+  font-weight: 500;
+  line-height: 0.82;
+  letter-spacing: -0.055em;
+}
+
+.scout-hero__intro {
+  max-width: 38rem;
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  line-height: 1.65;
+}
+
+.scout-story {
+  display: grid;
+  gap: 2rem;
+  padding-block: clamp(5rem, 11vw, 10rem);
+}
+
+.scout-story h2,
+.scout-meaning h2,
+.scout-name h2,
+.scout-logo-story h2 {
+  max-width: 12ch;
+  margin: 0.6rem 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.scout-image-break {
+  padding-bottom: clamp(5rem, 11vw, 10rem);
+}
+
+.scout-image-break figure {
+  margin: 0;
+}
+
+.scout-image-break img {
+  width: 100%;
+  max-height: 82svh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.scout-image-break figcaption {
+  margin-top: 0.85rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  opacity: 0.62;
+}
+
+.scout-meaning {
+  padding-bottom: clamp(6rem, 12vw, 11rem);
+}
+
+.scout-meaning__heading {
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.scout-meaning__grid {
+  display: grid;
+  border-top: 1px solid currentColor;
+}
+
+.scout-meaning__grid article {
+  padding: 2rem 0;
+  border-bottom: 1px solid currentColor;
+}
+
+.scout-number {
+  display: block;
+  margin-bottom: 2.25rem;
+  color: #b66a2c;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.scout-meaning h3 {
+  margin: 0 0 0.8rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+}
+
+.scout-meaning article p {
+  max-width: 30rem;
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 1.7;
+}
+
+.scout-name {
+  padding-block: clamp(5rem, 11vw, 10rem);
+  background: #214a38;
+  color: #fff;
+}
+
+.scout-name__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.scout-name .eyebrow {
+  color: #c9a97a;
+}
+
+.scout-logo-story {
+  padding-block: clamp(5rem, 11vw, 10rem);
+  background: #171717;
+  color: #fff;
+}
+
+.scout-logo-story__intro {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.scout-logo-evolution {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.scout-logo-card {
+  margin: 0;
+}
+
+.scout-logo-card__image {
+  display: grid;
+  place-items: center;
+  min-height: 26rem;
+  padding: clamp(2rem, 6vw, 5rem);
+}
+
+.scout-logo-card--paper .scout-logo-card__image {
+  background: #d7d3cc;
+}
+
+.scout-logo-card--final .scout-logo-card__image {
+  background: #b66a2c;
+}
+
+.scout-logo-card__image img {
+  width: min(100%, 25rem);
+  max-height: 24rem;
+  object-fit: contain;
+}
+
+.scout-logo-card figcaption {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.25rem 1rem;
+  padding-top: 1.25rem;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.scout-logo-card figcaption span {
+  grid-row: 1 / 3;
+  color: #c9a97a;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.scout-logo-card figcaption strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 500;
+}
+
+.scout-logo-card figcaption p {
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+.scout-closing {
+  padding-block: clamp(6rem, 13vw, 12rem);
+}
+
+.scout-closing blockquote {
+  max-width: 17ch;
+  margin: 1.2rem 0 clamp(3rem, 7vw, 6rem);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.scout-closing__copy {
+  max-width: 46rem;
+  margin-left: auto;
+}
+
+.scout-page .text-link {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 2rem;
+  padding-bottom: 0.3rem;
+  color: inherit;
+  border-bottom: 1px solid #b66a2c;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.scout-page .text-link:hover,
+.scout-page .text-link:focus-visible {
+  color: #b66a2c;
+}
+
+@media (min-width: 760px) {
+  .scout-page .section-shell {
+    width: min(100% - 4rem, 78rem);
+  }
+
+  .scout-hero__copy {
+    padding-inline: clamp(2rem, 7vw, 7rem);
+  }
+
+  .scout-story {
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.75fr);
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+
+  .scout-meaning__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .scout-meaning__grid article {
+    padding: 2rem;
+    border-right: 1px solid currentColor;
+  }
+
+  .scout-meaning__grid article:first-child {
+    padding-left: 0;
+  }
+
+  .scout-meaning__grid article:last-child {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .scout-name__grid,
+  .scout-logo-story__intro {
+    grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.8fr);
+    align-items: start;
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+
+  .scout-logo-evolution {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .scout-hero__copy {
+    padding-left: max(4rem, calc((100vw - 78rem) / 2));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scout-page *,
+  .scout-page *::before,
+  .scout-page *::after {
+    scroll-behavior: auto !important;
+  }
+}
