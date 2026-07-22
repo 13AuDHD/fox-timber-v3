@@ -44,10 +44,58 @@ main{min-height:60vh}
 .mobile-menu nav a{font-family:var(--serif);font-size:clamp(2.7rem,13vw,5rem);line-height:.92;padding:.22em .08em;border-bottom:1px solid rgba(255,255,255,.14)}
 .mobile-social{display:flex;justify-content:space-between;padding-top:1.25rem}
 .mobile-social a{width:3.1rem;height:3.1rem;border:1px solid rgba(255,255,255,.28);border-radius:50%;display:grid;place-items:center;font-size:1.2rem}
-.hero{min-height:100svh;padding:2rem 1.15rem 6.5rem;display:grid;gap:1.6rem;align-content:center;background:linear-gradient(180deg,#fff 0%,#f4f1ed 100%)}
-.hero-visual{position:relative;isolation:isolate}
-.hero-visual::before{content:"";position:absolute;inset:8% -5% -5% 15%;background:var(--tan);border-radius:48% 52% 42% 58%;z-index:-1;opacity:.48;transform:rotate(-6deg)}
-.hero-visual img{border-radius:50%;mix-blend-mode:multiply}
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  padding: 2rem 1.15rem 6.5rem;
+  display: grid;
+  gap: 1.6rem;
+  align-content: center;
+  background-color: #fff;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,.98) 32%,
+      rgba(255,255,255,.72) 55%,
+      rgba(255,255,255,.12) 100%
+    ),
+    url("../img/hero-mountain-background.jpeg");
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 12rem;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,.92)
+  );
+}
+.hero-visual {
+  position: relative;
+  isolation: isolate;
+}
+.hero-visual::before {
+  content: none;
+}
+.hero-visual img {
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+}
 .kicker,.eyebrow{margin:0 0 .9rem;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:700;color:var(--copper)}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:.94;margin:.18em 0}
 h1{font-size:clamp(3.6rem,16vw,8rem);letter-spacing:-.045em}
@@ -406,7 +454,28 @@ body.career-modal-open {overflow: hidden;}
   .privacy-control-heading{grid-template-columns:1fr auto;align-items:end}
   .privacy-option{grid-template-columns:minmax(0,1fr) auto;align-items:center;padding:1.5rem 1.75rem}
   .privacy-actions{grid-template-columns:repeat(3,1fr)}
+  .hero::before {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,.95) 0%,
+        rgba(255,255,255,.82) 45%,
+        rgba(255,255,255,.3) 100%
+      ),
+      url("../img/hero-mountain-background.jpg");
+    background-position: 67% center;
+    background-size: auto 100%;
+  }
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+  }
 }
+
 @media (min-width:64rem){
   .mobile-menu-button,.mobile-menu{display:none!important}
   .site-header{height:6rem;padding:0 max(2rem,calc((100vw - var(--content))/2));display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:900;background:rgba(255,255,255,.92);backdrop-filter:blur(1rem);border-bottom:1px solid rgba(23,23,23,.08)}
