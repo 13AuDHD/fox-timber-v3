@@ -454,26 +454,6 @@ body.career-modal-open {overflow: hidden;}
   .privacy-control-heading{grid-template-columns:1fr auto;align-items:end}
   .privacy-option{grid-template-columns:minmax(0,1fr) auto;align-items:center;padding:1.5rem 1.75rem}
   .privacy-actions{grid-template-columns:repeat(3,1fr)}
-  .hero::before {
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,.95) 0%,
-        rgba(255,255,255,.82) 45%,
-        rgba(255,255,255,.3) 100%
-      ),
-      url("../img/hero-mountain-background.jpg");
-    background-position: 67% center;
-    background-size: auto 100%;
-  }
-  .hero-copy {
-    position: relative;
-    z-index: 2;
-  }
-  .hero-visual {
-    position: relative;
-    z-index: 1;
-  }
 }
 
 @media (min-width:64rem){
@@ -494,6 +474,30 @@ body.career-modal-open {overflow: hidden;}
   .career-meta {grid-template-columns: 1.3fr 1fr 1fr .8fr 1fr;}
   .career-modal-header {padding: 1.5rem 2rem 2rem;}
   .career-modal-actions,.career-modal-meta,.career-modal-description {padding-left: 2rem;padding-right: 2rem;}
+}
+@media (max-width: 47.99rem) {
+  .hero::before {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,.95) 0%,
+        rgba(255,255,255,.82) 45%,
+        rgba(255,255,255,.3) 100%
+      ),
+      url("../img/hero-mountain-background.jpg");
+    background-position: 67% center;
+    background-size: auto 100%;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+  }
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
