@@ -68,7 +68,7 @@ main{min-height:60vh}
       rgba(255,255,255,.72) 55%,
       rgba(255,255,255,.12) 100%
     ),
-    url("/img/hero-mountain-background.jpeg");
+    url("../img/hero-mountain-background.jpeg");
   background-repeat: no-repeat;
   background-position: center right;
   background-size: cover;
@@ -484,7 +484,7 @@ body.career-modal-open {overflow: hidden;}
         rgba(255,255,255,.82) 45%,
         rgba(255,255,255,.3) 100%
       ),
-      url("../img/hero-mountain-background.jpg");
+      url("../img/hero-mountain-background.jpeg");
     background-position: 67% center;
     background-size: auto 100%;
   }
